@@ -32,10 +32,10 @@ body {
 }*/
 .bild-text {
     color: #333;
-    font-size: 0.8em;
+    font-size: 1.0em;
     background: transparent;
     /*padding: 0px 0px 0px 300px;*/
-    margin-left: 300px; /* ⬅️ äußeren Abstand zum linken Rand */
+    margin-left: 700px; /* ⬅️ äußeren Abstand zum linken Rand */
     border-radius: 8px;
     display: flex;
     flex-direction: row;
@@ -47,7 +47,7 @@ body {
 }
 
 #bild-titel #zeit-anzeige{
-    font-size: 0.9em;
+    font-size: 1.0em;
     font-weight: normal;
 }
  
