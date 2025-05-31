@@ -1,0 +1,196 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #5e5a5a;
+}
+
+.bild-crop-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.bild-crop-container {
+    position: relative;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 5; /*aspect-ratio: 16 / 5; schneidet oben/unten ab */
+    overflow: hidden;
+    margin: 0 auto;
+}
+/*
+.bild-crop-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 33% center !important;
+    display: block;
+}*/
+.bild-text {
+    color: #333;
+    font-size: 1.0em;
+    background: transparent;
+    /*padding: 0px 0px 0px 300px;*/
+    margin-left: 700px; /* ⬅️ äußeren Abstand zum linken Rand */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: flex-start;
+    margin-top: 10px; /* Abstand zum Bild */
+    width: 100%; /* wichtig für rechtsbündig */
+    text-align: left;
+}
+
+#bild-titel #zeit-anzeige{
+    font-size: 1.0em;
+    font-weight: normal;
+}
+ 
+.festes-bild-container {
+  flex: 0 0 auto;
+  position: relative;
+  width: 40%;
+  max-width: 1200px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.festes-bild-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Bild Werdegang*/
+.statisches-bild-Werdegang-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+  padding: 0 20px;
+  gap: 40px;
+}
+
+/* Bild Schulungen*/
+.statisches-bild-Schulungen-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+  padding: 0 20px;
+}
+
+/* Bild Immobilienverwaltung*/
+.statisches-bild-Immobilien-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+  padding: 0 20px;
+  gap: 40px;
+}
+
+/* Bild Schulungen*/
+.statisches-bild-Treuhand-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+  padding: 0 20px;
+  gap: 40px;
+}
+
+.text-rechts {
+  flex: 1;
+  font-size: 1em;
+  color: #444;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* 👈 Inhalt im Container unten halten */
+  height: 100%; /* passt sich dem Bild an */
+  min-height: 100%;
+}
+
+.text-links {
+  flex: 1;
+  font-size: 1em;
+  color: #444;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* 👈 Inhalt im Container unten halten */
+  height: 100%; /* passt sich dem Bild an */
+  min-height: 100%;
+}
+
+
+.kontakt-footer-wrapper {
+  background-color: #f0f0f0; /* hellgrau */
+  width: 100vw;              /* volle Bildschirmbreite */
+  padding: 20px 0 ;           /* vertikaler Abstand oben/unten */
+  color: #444;
+}
+
+.kontakt-inhalt {
+  max-width: 1200px;         /* begrenzt Textbreite wie der Rest */
+  margin: 0 auto;            /* zentriert den Block */
+  padding: 0 20px;           /* horizontaler Innenabstand */
+  color: #444;
+  font-size: 0.7em;
+}
+
+.kontakt-block a:hover {
+  text-decoration: underline;
+}
+
+.kontakt-inhalt h2 {
+  font-size: 0.7em; /* ⬅️ kleinerer Überschriftentext (z. B. "Kontakt") */
+}
+
+.footer {
+  background-color: #cccccc ; /* grauer Hintergrund */
+  color: #555;               /* dunklere Schrift */
+  text-align: center;
+  font-size: 0.75em;         /* kleinere Schrift */
+  padding: 12px 0;
+  margin-top: 0;
+  border-top: 1px solid #ccc;
+}
+
+/* Anpassung für kleinere Bildschirme */
+@media (max-width: 768px) {
+  .statisches-bild-Werdegang-wrapper,  
+  .statisches-bild-Schulungen-wrapper,
+  .statisches-bild-Immobilien-wrapper,
+  .statisches-bild-Treuhand-wrapper {
+    flex-direction: column;
+  }
+.festes-bild-container,
+  .text-rechts,
+  .text-links {
+    width: 100%;
+  }
+
+  .festes-bild-container img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+
+
