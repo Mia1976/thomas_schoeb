@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>👈Thomas Schöb</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #5e5a5a;
+        }
+
+        .bild-crop-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .bild-crop-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 5; /* Beschneidet oben/unten */
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .bild-crop-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }   
+     
+    </style>
+</head>
+<body>
+    <div class="bild-crop-wrapper">
+        <div class="bild-crop-container">
+            <img id="slideshow-img-1" class="slideshow-img active" src="{{ url_for('static', filename=bilder[0].pfad) }}">
+            <img id="slideshow-img-2" class="slideshow-img" src="">
+        </div>
+
+    <div class="bild-text" id="bild-info">
+                <div id="bild-titel">Gams, </div>
+                <div id="zeit-anzeige">{{ bilder[0].zeit }}</div>
+    </div>
+
+<!-- Statisches Bild Werdegang -->
+        <div class="statisches-bild-Werdegang-wrapper">
+            <div class="festes-bild-container">
+                <img src="{{ url_for('static', filename='fotos/IMG_4150_2.jpg') }}" alt="Zweites Bild">
+            </div>
+            <div class="text-rechts">
+                <h2>Mein Werdegang und die Gründung der Firma</h2>
+                <p>Ich, Thomas Schöb, habe im Februar 2018 die Firma gegründet.<br> 
+                <p>Hier ist ein Überblick über meinen Werdegang:<br><br>
+<em>Primarschule:</em> Ich hatte das Glück, im Bergschulhaus Wolfsacker in Gamserberg bei einem engagierten Lehrerehepaar meine Grundschulbildung zu absolvieren.<br>
+<em>Sekundarschule:</em> Anschließend besuchte ich die Sekundarschule in Gams.<br>
+<em>Berufsausbildung:</em> Danach begann ich meine Banklehre bei der St. Galler Kantonalbank.<br>
+<em>Weiterbildung:</em> Für meine Weiterbildung zum Buchhalter mit eidgenössischem Fachausweis (heute Finanzfachleute) wechselte ich in die Industrie, 
+wo ich bei Rieter in Sevelen, Dividella in Grabs und Ortlinghaus in Gams tätig war.<br>
+<p>Mit dieser Erfahrung habe ich die Grundlage für meine Unternehmensgründung gelegt.</p>
+            </div>
+        </div>
+   
+<div class="statisches-bild-Schulungen-wrapper">
+  <div class="text-links">
+    <h2>Schulungen</h2>
+    <p>Ich unterrichte im Finanzwesen an mehreren Institutionen: BzB Buchs, BWZ Rapperswil, Business School Zürich und Akademie St. Gallen. 
+        Die Bereiche umfassen: Sachbearbeiter Rechnungswesen/Treuhand, Finanzfachleute und Controller. Ich biete gerne Unterstützung bei Prüfungsvorbereitungen 
+        und Nachhilfe in kleinen Gruppen an.</p>
+  </div>
+  <div class="festes-bild-container">
+    <img src="{{ url_for('static', filename='fotos/IMG_5543.jpg') }}" alt="Zweites Bild">
+  </div>
+</div>
+
+<!-- Statisches Bild Immobilien -->
+        <div class="statisches-bild-Immobilien-wrapper">
+            <div class="festes-bild-container">
+                <img src="{{ url_for('static', filename='fotos/IMG_0128.jpg') }}" alt="Zweites Bild">
+            </div>
+            <div class="text-rechts">
+                <h2>Immobilienverwaltung</h2>
+                <p>- Verwaltung und Bewirtschaftung von Liegenschaften im Stockwerk- und Miteigentum<br>
+- Finanzbuchhaltung Stockwerkeigentum inkl. Inkasso<br>
+- Führung von StWE-Versammlungen und Protokollerstellung</p>
+            </div>
+        </div>
+
+<div class="statisches-bild-Treuhand-wrapper">
+  <div class="text-links">
+    <h2>Treuhand</h2>
+        Ich unterstütze Sie gerne bei Ihren Buchhaltungsaufgaben.
+        Es liegt bei Ihnen, ob Sie einen Teil selbst erledigen oder Ihren gesamten Belegordner zur Bearbeitung übergeben möchten.<br><br>
+        In den folgenden Bereichen kann ich Ihnen kompetent und tatkräftig zur Seite stehen:<br><br>
+        <em>Finanzbuchhaltung, einschließlich Jahres- oder Zwischenabschlüssen<br>
+        Debitoren- und Kreditorenbuchhaltung<br>
+        Mehrwertsteuer<br>
+        Steuererklärungen<br>
+        Lohnbuchhaltung<br>
+        Planung<br>
+        Analysen<br> </em>
+  </div>
+  <div class="festes-bild-container">
+    <img src="{{ url_for('static', filename='fotos/buchhaltung.jpg') }}" alt="Zweites Bild">
+  </div>
+</div>
+
+
+</div>
+
+<script>
+      const bilder = [
+            {% for bild in bilder %}
+                {
+                    pfad: "{{ url_for('static', filename=bild.pfad) }}",
+                    zeit: "{{ bild.zeit }}"
+                }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        let index = 0;
+
+        const img1 = document.getElementById("slideshow-img-1");
+        const img2 = document.getElementById("slideshow-img-2");
+        /*const imgTag = document.getElementById("slideshow-img");*/
+        const zeitDiv = document.getElementById("zeit-anzeige");
+
+    setInterval(() => {
+        const nächstes = (index + 1) % bilder.length;
+
+        const aktivesImg = img1.classList.contains("active") ? img1 : img2;
+        const neuesImg = aktivesImg === img1 ? img2 : img1;
+
+        neuesImg.src = bilder[nächstes].pfad;
+        zeitDiv.textContent = bilder[nächstes].zeit;
+
+        neuesImg.classList.add("active");
+        aktivesImg.classList.remove("active");
+
+        index = nächstes;
+  }, 3000);
+</script>
+
+<div class="kontakt-footer-wrapper">
+  <div class="kontakt-inhalt">
+    <h3>Kontakt</h3>
+    <p>Thomas Schöb<br>
+    Schöb Consulting GmbH<br>
+    Chrezibach 2261, CH-9473 Gams<br>
+    <p>📞 +41 78 717 19 93<br>
+    ✉️ <a href="mailto:schoeb-consulting@outlook.com">schoeb-consulting@outlook.com</a></p>
+  </div>
+</div>
+
+<footer class="footer">
+  &copy; 2025 Schöb Consulting GmbH - Alle Rechte vorbehalten | Datenschutz | Impressum | Chrezibach 2261, CH-9473 Gams | +41787171993 | schoeb-consulting@outlook.com
+</footer>
+</body>
+</html>
