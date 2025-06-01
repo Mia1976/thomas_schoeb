@@ -22,14 +22,14 @@ body {
     overflow: hidden;
     margin: 0 auto;
 }
-/*
+
 .bild-crop-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 33% center !important;
     display: block;
-}*/
+}
 .bild-text {
     color: #333;
     font-size: 1.0em;
@@ -46,7 +46,8 @@ body {
     text-align: left;
 }
 
-#bild-titel #zeit-anzeige{
+#bild-titel, 
+#zeit-anzeige{
     font-size: 1.0em;
     font-weight: normal;
 }
