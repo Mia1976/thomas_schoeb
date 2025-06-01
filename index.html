@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>😊 Thomas Schöb</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title> 😊Thomas Schöb</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="bild-crop-wrapper">
+  <div class="bild-crop-wrapper">
     <div class="bild-crop-container">
-        <img class="slideshow-img active" src="fotos/IMG_5543.jpg" alt="Slideshow">
+      <img id="slideshow-img-1" class="slideshow-img active" src="fotos/IMG_4150_2.jpg" alt="Slideshow 1">
+      <img id="slideshow-img-2" class="slideshow-img" src="" alt="Slideshow 2">
     </div>
 
     <div class="bild-text" id="bild-info">
-        <div id="bild-titel">Gams, </div>
-        <div id="zeit-anzeige">Mai 2024</div>
+      <div id="bild-titel">Gams,</div>
+      <div id="zeit-anzeige">2024</div>
     </div>
 
     <!-- Werdegang -->
     <div class="statisches-bild-Werdegang-wrapper">
-        <div class="festes-bild-container">
-            <img src="fotos/IMG_4150_2.jpg" alt="Werdegang Bild">
-        </div>
-        <div class="text-rechts">
-            <h2>Mein Werdegang und die Gründung der Firma</h2>
-            <p>Ich, Thomas Schöb, habe im Februar 2018 die Firma gegründet.</p>
-            <p>Hier ist ein Überblick über meinen Werdegang:</p>
-            <p><em>Primarschule:</em> Bergschulhaus Wolfsacker, Gamserberg<br>
-               <em>Sekundarschule:</em> in Gams<br>
-               <em>Berufsausbildung:</em> Banklehre bei der St. Galler Kantonalbank<br>
-               <em>Weiterbildung:</em> Buchhalter mit eidg. Fachausweis. Tätig bei Rieter, Dividella und Ortlinghaus</p>
-            <p>Mit dieser Erfahrung habe ich die Grundlage für meine Unternehmensgründung gelegt.</p>
-        </div>
+      <div class="festes-bild-container">
+        <img src="fotos/IMG_4150_2.jpg" alt="Werdegang">
+      </div>
+      <div class="text-rechts">
+        <h2>Mein Werdegang und die Gründung der Firma</h2>
+        <p>Ich, Thomas Schöb, habe im Februar 2018 die Firma gegründet.</p>
+        <p><em>Primarschule:</em> Bergschulhaus Wolfsacker, Gamserberg<br>
+        <em>Sekundarschule:</em> Gams<br>
+        <em>Lehre:</em> St. Galler Kantonalbank<br>
+        <em>Industrie:</em> Rieter, Dividella, Ortlinghaus<br></p>
+        <p>Mit dieser Erfahrung habe ich die Grundlage für meine Unternehmensgründung gelegt.</p>
+      </div>
     </div>
 
-   <!-- Schulungen -->
+    <!-- Schulungen -->
     <div class="statisches-bild-Schulungen-wrapper">
       <div class="text-links">
         <h2>Schulungen</h2>
@@ -62,7 +62,6 @@
       </div>
     </div>
 
-
     <!-- Treuhand -->
     <div class="statisches-bild-Treuhand-wrapper">
       <div class="text-links">
@@ -87,22 +86,54 @@
 
   </div>
 
-<!-- Kontakt -->
-<div class="kontakt-footer-wrapper">
+  <!-- Kontakt -->
+  <div class="kontakt-footer-wrapper">
     <div class="kontakt-inhalt">
-        <h3>Kontakt</h3>
-        <p>Thomas Schöb<br>
-        Schöb Consulting GmbH<br>
-        Chrezibach 2261, CH-9473 Gams</p>
-        <p>📞 +41 78 717 19 93<br>
-        ✉️ <a href="mailto:schoeb-consulting@outlook.com">schoeb-consulting@outlook.com</a></p>
+      <h3>Kontakt</h3>
+      <p>Thomas Schöb<br>
+      Schöb Consulting GmbH<br>
+      Chrezibach 2261, CH-9473 Gams</p>
+      <p>📞 +41 78 717 19 93<br>
+      ✉️ <a href="mailto:schoeb-consulting@outlook.com">schoeb-consulting@outlook.com</a></p>
     </div>
-</div>
+  </div>
 
-<footer class="footer">
-  &copy; 2025 Schöb Consulting GmbH - Alle Rechte vorbehalten | Datenschutz | Impressum | Chrezibach 2261, CH-9473 Gams | +41787171993 | schoeb-consulting@outlook.com
-</footer>
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 Schöb Consulting GmbH - Alle Rechte vorbehalten | Datenschutz | Impressum | Chrezibach 2261, CH-9473 Gams | +41 78 717 19 93 | schoeb-consulting@outlook.com
+  </footer>
+
+  <!-- Optionaler JS-Slider -->
+  <script>
+    const bilder = [
+      "fotos/IMG_4150_2.jpg",
+      "fotos/IMG_5543.jpg",
+      "fotos/IMG_0128.jpg"
+    ];
+    const zeiten = ["2024", "2023", "2022"];
+    let index = 0;
+
+    const img1 = document.getElementById("slideshow-img-1");
+    const img2 = document.getElementById("slideshow-img-2");
+    const zeitDiv = document.getElementById("zeit-anzeige");
+
+    setInterval(() => {
+      const next = (index + 1) % bilder.length;
+
+      const activeImg = img1.classList.contains("active") ? img1 : img2;
+      const newImg = activeImg === img1 ? img2 : img1;
+
+      newImg.src = bilder[next];
+      zeitDiv.textContent = zeiten[next];
+
+      newImg.classList.add("active");
+      activeImg.classList.remove("active");
+
+      index = next;
+    }, 3000);
+  </script>
 
 </body>
 </html>
+
 
