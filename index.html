@@ -32,20 +32,22 @@
     const img2 = document.getElementById("slideshow-img-2");
     const zeitDiv = document.getElementById("zeit-anzeige");
 
-    setInterval(() => {
-        const nächstes = (index + 1) % bilder.length;
+setInterval(() => {
+    const nächstes = (index + 1) % bilder.length;
 
-        const aktivesImg = img1.classList.contains("active") ? img1 : img2;
-        const neuesImg = aktivesImg === img1 ? img2 : img1;
+    const aktivesImg = img1.classList.contains("active") ? img1 : img2;
+    const neuesImg = aktivesImg === img1 ? img2 : img1;
 
-        neuesImg.src = bilder[nächstes].pfad;
+    neuesImg.src = bilder[nächstes].pfad;
+
+    // Erst wenn das neue Bild geladen ist, tausche die Anzeige
+    neuesImg.onload = () => {
         zeitDiv.textContent = bilder[nächstes].zeit;
-
         neuesImg.classList.add("active");
         aktivesImg.classList.remove("active");
-
         index = nächstes;
-    }, 3000);
+    };
+}, 3000);
 </script>
 
 <!-- Werdegang -->
