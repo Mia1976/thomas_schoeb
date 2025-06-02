@@ -5,24 +5,36 @@ body {
     padding: 0;
     color: #5e5a5a;
 }
-
+.slideshow-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+}
+.slideshow-img.active {
+    opacity: 1;
+    z-index: 1;
+}
 .bild-crop-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
 }
-
 .bild-crop-container {
     position: relative;
-    flex-wrap: wrap;
     width: 100%;
     max-width: 1200px;
     aspect-ratio: 16 / 5; /*aspect-ratio: 16 / 5; schneidet oben/unten ab */
     overflow: hidden;
     margin: 0 auto;
+    /*display: flex;
+    flex-wrap: wrap;*/
 }
-
 .bild-crop-container img {
     width: 100%;
     height: 100%;
@@ -45,13 +57,19 @@ body {
     width: 100%; /* wichtig für rechtsbündig */
     text-align: left;
 }
-
+@media (max-width: 768px) {
+  .bild-text {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
 #bild-titel, 
 #zeit-anzeige{
     font-size: 1.0em;
     font-weight: normal;
-}
- 
+} 
 .festes-bild-container {
   flex: 0 0 auto;
   position: relative;
@@ -61,7 +79,6 @@ body {
   overflow: hidden;
   margin-top: 40px;
 }
-
 .festes-bild-container img {
     width: 100%;
     height: 100%;
@@ -69,7 +86,6 @@ body {
     object-position: center;
     display: block;
 }
-
 /* Bild Werdegang*/
 .statisches-bild-Werdegang-wrapper {
   display: flex;
@@ -80,7 +96,6 @@ body {
   padding: 0 20px;
   gap: 40px;
 }
-
 /* Bild Schulungen*/
 .statisches-bild-Schulungen-wrapper {
   display: flex;
@@ -91,7 +106,6 @@ body {
   margin: 60px auto 0 auto;
   padding: 0 20px;
 }
-
 /* Bild Immobilienverwaltung*/
 .statisches-bild-Immobilien-wrapper {
   display: flex;
@@ -102,8 +116,7 @@ body {
   padding: 0 20px;
   gap: 40px;
 }
-
-/* Bild Schulungen*/
+/* Bild Treuhand*/
 .statisches-bild-Treuhand-wrapper {
   display: flex;
   justify-content: space-between;
@@ -113,7 +126,6 @@ body {
   padding: 0 20px;
   gap: 40px;
 }
-
 .text-rechts {
   flex: 1;
   font-size: 1em;
@@ -125,7 +137,6 @@ body {
   height: 100%; /* passt sich dem Bild an */
   min-height: 100%;
 }
-
 .text-links {
   flex: 1;
   font-size: 1em;
@@ -137,15 +148,12 @@ body {
   height: 100%; /* passt sich dem Bild an */
   min-height: 100%;
 }
-
-
 .kontakt-footer-wrapper {
   background-color: #f0f0f0; /* hellgrau */
   width: 100vw;              /* volle Bildschirmbreite */
   padding: 20px 0 ;           /* vertikaler Abstand oben/unten */
   color: #444;
 }
-
 .kontakt-inhalt {
   max-width: 1200px;         /* begrenzt Textbreite wie der Rest */
   margin: 0 auto;            /* zentriert den Block */
@@ -153,15 +161,12 @@ body {
   color: #444;
   font-size: 0.7em;
 }
-
 .kontakt-block a:hover {
   text-decoration: underline;
 }
-
 .kontakt-inhalt h2 {
   font-size: 0.7em; /* ⬅️ kleinerer Überschriftentext (z. B. "Kontakt") */
 }
-
 .footer {
   background-color: #cccccc ; /* grauer Hintergrund */
   color: #555;               /* dunklere Schrift */
@@ -171,7 +176,6 @@ body {
   margin-top: 0;
   border-top: 1px solid #ccc;
 }
-
 /* Anpassung für kleinere Bildschirme */
 @media (max-width: 768px) {
   .statisches-bild-Werdegang-wrapper,  
@@ -185,7 +189,6 @@ body {
   .text-links {
     width: 100%;
   }
-
   .festes-bild-container img {
     width: 100%;
     height: auto;
